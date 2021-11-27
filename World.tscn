@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://backdrops/Middle.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://backdrops/Back.png" type="Texture" id=5]
+[ext_resource path="res://backdrops/Backdrop.png" type="Texture" id=10]
+[ext_resource path="res://backdrops/Front.png" type="Texture" id=11]
+[ext_resource path="res://backdrops/Moon.png" type="Texture" id=12]
+[ext_resource path="res://sprites/Snail1.png" type="Texture" id=13]
+[ext_resource path="res://sprites/snail3.png" type="Texture" id=14]
+[ext_resource path="res://sprites/Snail2.png" type="Texture" id=15]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 15 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[node name="World" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0, 1 )
+motion_mirroring = Vector2( 300, 0 )
+
+[node name="Stars" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 10 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0, 1 )
+
+[node name="Moon" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 91, 75 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 300, 0 )
+
+[node name="MontainsFar" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.175, 1 )
+motion_mirroring = Vector2( 300, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.9, 1 )
+motion_mirroring = Vector2( 300, 0 )
+
+[node name="Front" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 11 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 150 )
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+position = Vector2( 110, 100 )
+frames = SubResource( 1 )
+animation = "walk"
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="Player/AnimatedSprite"]
+offset = Vector2( 40, -25 )
+current = true
+smoothing_enabled = true
+drag_margin_left = 0.18
+drag_margin_top = 0.55
+drag_margin_right = 0.3
+drag_margin_bottom = 0.55
+editor_draw_drag_margin = true
