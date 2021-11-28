@@ -82,7 +82,7 @@ animation = "walk"
 centered = false
 
 [node name="Camera2D" type="Camera2D" parent="Player/AnimatedSprite"]
-offset = Vector2( 40, -25 )
+offset = Vector2( 40, -35 )
 current = true
 smoothing_enabled = true
 drag_margin_left = 0.18
