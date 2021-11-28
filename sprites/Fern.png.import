@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Snail2.png-b435fee1433b7809ebbf2896bc45e083.stex"
+path="res://.import/Fern.png-30ab4106f483400f016d2e3104b48184.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Snail2.png"
-dest_files=[ "res://.import/Snail2.png-b435fee1433b7809ebbf2896bc45e083.stex" ]
+source_file="res://sprites/Fern.png"
+dest_files=[ "res://.import/Fern.png-30ab4106f483400f016d2e3104b48184.stex" ]
 
 [params]
 

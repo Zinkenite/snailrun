@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Snail2.png-b435fee1433b7809ebbf2896bc45e083.stex"
+path="res://.import/MiddleEarth3.png-813b993f3a2f5b2bc3edb12b7ac09d98.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Snail2.png"
-dest_files=[ "res://.import/Snail2.png-b435fee1433b7809ebbf2896bc45e083.stex" ]
+source_file="res://sprites/MiddleEarth3.png"
+dest_files=[ "res://.import/MiddleEarth3.png-813b993f3a2f5b2bc3edb12b7ac09d98.stex" ]
 
 [params]
 

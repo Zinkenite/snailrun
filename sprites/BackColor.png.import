@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Snail2.png-b435fee1433b7809ebbf2896bc45e083.stex"
+path="res://.import/BackColor.png-7c68b08f491c291cc29d0bd8a400c7f6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Snail2.png"
-dest_files=[ "res://.import/Snail2.png-b435fee1433b7809ebbf2896bc45e083.stex" ]
+source_file="res://sprites/BackColor.png"
+dest_files=[ "res://.import/BackColor.png-7c68b08f491c291cc29d0bd8a400c7f6.stex" ]
 
 [params]
 
