@@ -1,46 +1,39 @@
-extends Node2D
+extends KinematicBody2D
 
+const UP = Vector2(0,-1)
+const GRAVITY = 200
+const MAXFALLSPEED = 200
+const MAXSPEED = 80
+const JUMPFORCE = 100
+const ACCEL = 300
+const FRICTION = .25
+const AIRRESIST = 0.02
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-export var speed = 57
-var screen_size
+var motion = Vector2()
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	screen_size = get_viewport_rect().size
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var velocity = Vector2()
-	if Input.is_action_pressed("ui_right"):
-		velocity.x +=1
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= 1
-#	if Input.is_action_pressed("ui_down"):
-#		velocity.y += 1
-#	if Input.is_action_pressed("ui_up"):
-#		velocity.y -= 1
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		$AnimatedSprite.animation = "walk"
-		$AnimatedSprite.play()
-	else:
-		$AnimatedSprite.animation = "Idle"
-		$AnimatedSprite.play()
-		
-	if velocity.x != 0:
-		$AnimatedSprite.animation = "walk"
-		#$AnimatedSprite.flip_v = false
-		# See the note below about boolean assignment
-		$AnimatedSprite.flip_h = velocity.x < 0
-#	elif velocity.y != 0:
-#		$AnimatedSprite.animation = "up"
-#		$AnimatedSprite.flip_v = velocity.y > 0
-#	$AnimatedSprite.flip_h = velocity.x < 0
-	position += velocity * delta
+func _physics_process(delta):
+	var x_input = Input.get_action_strength("right") - Input.get_action_strength("left")
 	
-	#position.x = clamp(position.x, 30, screen_size.x -30)
-	#position.y = clamp(position.y, 35, screen_size.y -35)
+	if x_input != 0:
+		$AnimatedSprite.play("walk")
+		motion.x += x_input * ACCEL * delta
+		motion.x = clamp(motion.x, -MAXSPEED,MAXSPEED)
+		$AnimatedSprite.flip_h = motion.x < 0
+
+	motion.y += GRAVITY * delta
+	if motion.y > MAXFALLSPEED:
+		motion.y = MAXFALLSPEED
+	
+	if is_on_floor():
+		if x_input == 0: 
+			$AnimatedSprite.play("idle")
+			motion.x = lerp(motion.x, 0,FRICTION)
+		if Input.is_action_just_pressed("jump"):
+			motion.y = -JUMPFORCE
+	else:
+		if Input.is_action_just_released("jump") and motion.y < -JUMPFORCE/2:
+			motion.y = -JUMPFORCE/2
+		if x_input == 0:
+			motion.x = lerp(motion.x, 0,AIRRESIST)
+			
+	motion = move_and_slide(motion,Vector2.UP)
