@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
 const UP = Vector2(0,-1)
-const GRAVITY = 200
+const GRAVITY = 600
 const MAXFALLSPEED = 200
 const MAXSPEED = 80
-const JUMPFORCE = 100
+const JUMPFORCE = 400	
 const ACCEL = 300
 const FRICTION = .25
 const AIRRESIST = 0.02
@@ -35,5 +35,11 @@ func _physics_process(delta):
 			motion.y = -JUMPFORCE/2
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0,AIRRESIST)
-			
+	
+	if !is_on_floor():
+		if motion.y < 0:
+			$AnimatedSprite.play("jump")
+		elif motion.y > 0:
+			$AnimatedSprite.play("fall")
+	
 	motion = move_and_slide(motion,Vector2.UP)

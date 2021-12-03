@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UglyFarmer7.png-dbb765c9a09200a9f04b3b6012791d89.stex"
+path="res://.import/SnailJump1.png-c2f84d3dacdaa512f73523ea2c8951f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UglyFarmer7.png"
-dest_files=[ "res://.import/UglyFarmer7.png-dbb765c9a09200a9f04b3b6012791d89.stex" ]
+source_file="res://sprites/SnailJump1.png"
+dest_files=[ "res://.import/SnailJump1.png-c2f84d3dacdaa512f73523ea2c8951f0.stex" ]
 
 [params]
 

@@ -144,7 +144,6 @@ texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Walk"
-playback_process_mode = 0
 playback_speed = 0.6
 anims/RESET = SubResource( 2 )
 anims/Setup = SubResource( 3 )
